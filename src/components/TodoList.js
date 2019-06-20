@@ -23,10 +23,19 @@ import EntryForm from './EntryForm';
     // include the ability for each entry to be put back if accidentally checked off
 
 export default class TodoList extends React.Component {
+  state = {
+    taskList: []
+  };
+
+  addTask = (task) => {
+    this.setState({
+      taskList: [task, ...this.state.taskList]
+    });
+  }
   render() {
     return (
       <div>
-        <EntryForm />
+        <EntryForm onSubmit={this.addTask} />
       </div>
     )
   }

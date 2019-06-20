@@ -1,4 +1,5 @@
 import React from 'react';
+import {UID} from 'react-uid';
 
 // Make simple form for new entries
   // input area
@@ -15,14 +16,41 @@ export default class EntryForm extends React.Component {
     })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.onSubmit({
+      // id: {uid(item)},
+      text: this.state.text,
+      complete: false
+    });
+  }
+
   render() {
     return (
-      <input 
-        name="text"  
-        value={this.state.text}
-        onChange={this.handleChange}
-        placeholder="I need to..." 
-      />
-      )
+      <div className="formWrapper">
+        <form onSubmit={this.handleSubmit}>
+          <UID>
+            {id => (
+              <React.Fragment>
+                <label htmlFor={id}>
+                  What do you need to do today?
+                </label>
+                <input 
+                  type="input"
+                  id={id}
+                  name="text"  
+                  value={this.state.text}
+                  onChange={this.handleChange}
+                  placeholder="I need to..." 
+                />
+              </React.Fragment>
+            )}
+          </UID>
+          <button>
+            Add Task
+          </button>
+        </form>
+      </div>
+    )
   }
 }
