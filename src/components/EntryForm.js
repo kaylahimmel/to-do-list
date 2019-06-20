@@ -1,15 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export class EntryForm extends React.Component {
+// Make simple form for new entries
+  // input area
+  // 'add' or 'submit' button for the form
+
+export default class EntryForm extends React.Component {
+  state = {
+    text: ''
+  }
+  
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
   render() {
     return (
-      <div className="todoEntryWrapper">
-        <form className="todoEntryForm">
-          <input placeholder="What do you need to do today?">
-            <button type="submit">Add it to the List</button>
-          </input>
-        </form>
-      </div>
-    )
+      <input 
+        name="text"  
+        value={this.state.text}
+        onChange={this.handleChange}
+        placeholder="I need to..." 
+      />
+      )
   }
 }
