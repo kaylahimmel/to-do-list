@@ -23,6 +23,9 @@ export default class EntryForm extends React.Component {
       text: this.state.text,
       complete: false
     });
+    this.setState({
+      text: ''
+    });
   }
 
   render() {
@@ -39,7 +42,7 @@ export default class EntryForm extends React.Component {
             onChange={this.handleChange}
             placeholder="I need to..." 
           />
-          <button>
+          <button onSubmit={this.handleSubmit}>
             Add Task
           </button>
         </form>
