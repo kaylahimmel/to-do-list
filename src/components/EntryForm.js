@@ -1,10 +1,6 @@
 import React from 'react';
 import shortid from 'shortid';
 
-// Make simple form for new entries
-  // input area
-  // 'add' or 'submit' button for the form
-
 export default class EntryForm extends React.Component {
   state = {
     text: ''

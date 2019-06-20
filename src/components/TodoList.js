@@ -1,5 +1,6 @@
 import React from 'react';
 import EntryForm from './EntryForm';
+import Task from './Task';
 
 // MVP:
   // Make simple form for new entries
@@ -32,12 +33,33 @@ export default class TodoList extends React.Component {
       taskList: [task, ...this.state.taskList]
     });
   }
+
+  onCheckOff = (id) => {
+    this.setState({
+      taskList: this.state.taskList.map(task => {
+        if (task.id === id) {
+          return {
+            ...task,
+            complete: !task.complete
+          };
+        } else {
+          return task;
+        }
+      })
+    })
+  }
+
   render() {
     return (
       <div>
         <EntryForm onSubmit={this.addTask} />
         {this.state.taskList.map(task => (
-          <div key={task.id}>{task.text}</div>))}
+          <Task 
+            key={task.id} 
+            task={task} 
+            onCheckOff={() => this.onCheckOff(task.id)} 
+          />
+        ))}
       </div>
     )
   }
