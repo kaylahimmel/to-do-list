@@ -36,6 +36,7 @@ export default class TodoList extends React.Component {
     return (
       <div>
         <EntryForm onSubmit={this.addTask} />
+        {JSON.stringify(this.state.taskList)}
       </div>
     )
   }
