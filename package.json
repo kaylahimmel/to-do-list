@@ -7,7 +7,7 @@
     "dot-prop": "^6.0.0",
     "elliptic": "^6.5.3",
     "eslint-utils": "^2.1.0",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "http-proxy": "^1.18.1",
     "kind-of": "^6.0.3",
     "lodash": "^4.17.20",
